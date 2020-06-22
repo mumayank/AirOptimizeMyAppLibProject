@@ -1,0 +1,3 @@
+include ':airoptimizemyapplib'
+include ':app'
+rootProject.name = "AirOptimizeMyAppLibProject"
