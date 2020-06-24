@@ -23,7 +23,9 @@
             android:orientation="vertical">
 
             <TextView
-                android:padding="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please Do This One-Time Fix\n(Important)"
@@ -1412,7 +1414,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
-                android:padding="24dp">
+                android:padding="16dp">
 
                 <ImageView
                     android:layout_width="wrap_content"

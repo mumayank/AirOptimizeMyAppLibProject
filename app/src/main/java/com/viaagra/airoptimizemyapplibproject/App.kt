@@ -21,7 +21,7 @@ class App : Application() {
             .setUseDefaultSharedPreference(true)
             .build()
 
-        if (Prefs.getBoolean(App.PREFS_IS_SELECTED_THEME_LIGHT, true)) {
+        if (Prefs.getBoolean(PREFS_IS_SELECTED_THEME_LIGHT, true)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
