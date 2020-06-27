@@ -20,7 +20,10 @@ class MainActivity : AppCompatActivity() {
                 Intent(
                     this,
                     AirOptimizeMyAppActivity::class.java
-                ).putExtra(AirOptimizeMyAppActivity.IS_THEME_LIGHT, Prefs.getBoolean(App.PREFS_IS_SELECTED_THEME_LIGHT, true))
+                ).putExtra(
+                    AirOptimizeMyAppActivity.IS_THEME_LIGHT,
+                    Prefs.getBoolean(App.PREFS_IS_SELECTED_THEME_LIGHT, true)
+                )
             )
         }
 

@@ -1,9 +1,6 @@
 package com.mumayank.airoptimizemyapplib
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -11,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.air_optimize_my_app_activity.*
@@ -24,52 +22,64 @@ class AirOptimizeMyAppActivity : AppCompatActivity() {
         const val IS_THEME_LIGHT = "IS_THEME_LIGHT"
 
         val rvItems = arrayListOf(
-            RvItem("OnePlus", arrayListOf(
-                RvItemSub("Open Settings"),
-                RvItemSub("Select Battery"),
-                RvItemSub("Select Battery Optimization"),
-                RvItemSub("Select this app"),
-                RvItemSub("Select Don't Optimize")
-            )),
-            RvItem("Xiaomi/ Mi/ Redmi", arrayListOf(
-                RvItemSub("Open Security App"),
-                RvItemSub("Select Manage Apps"),
-                RvItemSub("Select this app"),
-                RvItemSub("Enable Autostart"),
-                RvItemSub("Select No Restrictions in Battery Saver")
-            )),
-            RvItem("Samsung", arrayListOf(
-                RvItemSub("Open Settings > Apps"),
-                RvItemSub("Select Menu (top-right)"),
-                RvItemSub("Select Special Access"),
-                RvItemSub("Select Optimize Battery Usage"),
-                RvItemSub("Turn it off for this app"),
-                RvItemSub("Open Settings > Device Maintenance"),
-                RvItemSub("Select Battery > Scroll to bottom"),
-                RvItemSub("Select Unmonitored Apps"),
-                RvItemSub("Select Add Apps, and add this app")
-            )),
-            RvItem("Motorola", arrayListOf(
-                RvItemSub("Open Settings"),
-                RvItemSub("Select Battery"),
-                RvItemSub("Select Menu (top-right)"),
-                RvItemSub("Select Battery Optimization"),
-                RvItemSub("Select All Apps from the dropdown"),
-                RvItemSub("Select this app from the list"),
-                RvItemSub("Select Don't Optimize")
-            )),
-            RvItem("Lenovo", arrayListOf(
-                RvItemSub("Open Settings"),
-                RvItemSub("Select Apps"),
-                RvItemSub("Select this app"),
-                RvItemSub("Select Battery"),
-                RvItemSub("Select Battery Optimization"),
-                RvItemSub("Select Don't Optimize")
-            )),
-            RvItem("Others", arrayListOf(
-                RvItemSub("These settings are only required if after restarting your phone, the persistent notification of this app doesn't come up automatically. So before proceeding, kindly cross-check if this is true for your phone"),
-                RvItemSub("If the persistent notification isn't coming up automatically after restarting your phone, search for Battery / Battery Optimization settings in your phone and for this app, turn if off (or Don't Optimize)")
-            ))
+            RvItem(
+                "OnePlus", arrayListOf(
+                    RvItemSub("Open Settings"),
+                    RvItemSub("Select Battery"),
+                    RvItemSub("Select Battery Optimization"),
+                    RvItemSub("Select this app"),
+                    RvItemSub("Select Don't Optimize")
+                )
+            ),
+            RvItem(
+                "Xiaomi/ Mi/ Redmi", arrayListOf(
+                    RvItemSub("Open Security App"),
+                    RvItemSub("Select Manage Apps"),
+                    RvItemSub("Select this app"),
+                    RvItemSub("Enable Autostart"),
+                    RvItemSub("Select No Restrictions in Battery Saver")
+                )
+            ),
+            RvItem(
+                "Samsung", arrayListOf(
+                    RvItemSub("Open Settings > Apps"),
+                    RvItemSub("Select Menu (top-right)"),
+                    RvItemSub("Select Special Access"),
+                    RvItemSub("Select Optimize Battery Usage"),
+                    RvItemSub("Turn it off for this app"),
+                    RvItemSub("Open Settings > Device Maintenance"),
+                    RvItemSub("Select Battery > Scroll to bottom"),
+                    RvItemSub("Select Unmonitored Apps"),
+                    RvItemSub("Select Add Apps, and add this app")
+                )
+            ),
+            RvItem(
+                "Motorola", arrayListOf(
+                    RvItemSub("Open Settings"),
+                    RvItemSub("Select Battery"),
+                    RvItemSub("Select Menu (top-right)"),
+                    RvItemSub("Select Battery Optimization"),
+                    RvItemSub("Select All Apps from the dropdown"),
+                    RvItemSub("Select this app from the list"),
+                    RvItemSub("Select Don't Optimize")
+                )
+            ),
+            RvItem(
+                "Lenovo", arrayListOf(
+                    RvItemSub("Open Settings"),
+                    RvItemSub("Select Apps"),
+                    RvItemSub("Select this app"),
+                    RvItemSub("Select Battery"),
+                    RvItemSub("Select Battery Optimization"),
+                    RvItemSub("Select Don't Optimize")
+                )
+            ),
+            RvItem(
+                "Others", arrayListOf(
+                    RvItemSub("These settings are only required if after restarting your phone, the persistent notification of this app doesn't come up automatically. So before proceeding, kindly cross-check if this is true for your phone"),
+                    RvItemSub("If the persistent notification isn't coming up automatically after restarting your phone, search for Battery / Battery Optimization settings in your phone and for this app, turn if off (or Don't Optimize)")
+                )
+            )
         )
 
     }
@@ -90,13 +100,37 @@ class AirOptimizeMyAppActivity : AppCompatActivity() {
         }
 
         // set rv
-        AirRv(object: AirRv.Callback {
+        AirRv(object : AirRv.Callback {
 
-            override fun getAppContext(): Context? {
+            override fun aGetAppContext(): Context? {
                 return this@AirOptimizeMyAppActivity
             }
 
-            override fun getBindView(
+            override fun bGetLayoutManager(appContext: Context?): RecyclerView.LayoutManager? {
+                return LinearLayoutManager(appContext)
+            }
+
+            override fun cGetRvHolderViewGroup(): ViewGroup? {
+                return rvHolder
+            }
+
+            override fun dGetSize(): Int? {
+                return rvItems.size
+            }
+
+            override fun eGetViewType(position: Int): Int? {
+                return 0
+            }
+
+            override fun fGetViewLayoutId(viewType: Int): Int? {
+                return R.layout.rv_item
+            }
+
+            override fun gGetViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+                return CustomViewHolder(view)
+            }
+
+            override fun hGetBindView(
                 viewHolder: RecyclerView.ViewHolder,
                 viewType: Int,
                 position: Int
@@ -108,41 +142,40 @@ class AirOptimizeMyAppActivity : AppCompatActivity() {
                 defineRvSub(customViewHolder.rvHolderSub, rvItem.rvItemsSub)
             }
 
-            override fun getLayoutManager(appContext: Context?): RecyclerView.LayoutManager? {
-                return LinearLayoutManager(appContext)
-            }
-
-            override fun getRvHolderViewGroup(): ViewGroup? {
-                return rvHolder
-            }
-
-            override fun getSize(): Int? {
-                return rvItems.size
-            }
-
-            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return CustomViewHolder(view)
-            }
-
-            override fun getViewLayoutId(viewType: Int): Int? {
-                return R.layout.rv_item
-            }
-
-            override fun getViewType(position: Int): Int? {
-                return 0
-            }
-
         })
     }
 
     private fun defineRvSub(rvHolderSub: ViewGroup?, rvItemsSub: ArrayList<RvItemSub>) {
-        AirRv(object: AirRv.Callback {
-
-            override fun getAppContext(): Context? {
+        AirRv(object : AirRv.Callback {
+            override fun aGetAppContext(): Context? {
                 return this@AirOptimizeMyAppActivity
             }
 
-            override fun getBindView(
+            override fun bGetLayoutManager(appContext: Context?): RecyclerView.LayoutManager? {
+                return LinearLayoutManager(appContext)
+            }
+
+            override fun cGetRvHolderViewGroup(): ViewGroup? {
+                return rvHolderSub
+            }
+
+            override fun dGetSize(): Int? {
+                return rvItemsSub.size
+            }
+
+            override fun eGetViewType(position: Int): Int? {
+                return 0
+            }
+
+            override fun fGetViewLayoutId(viewType: Int): Int? {
+                return R.layout.rv_item_sub
+            }
+
+            override fun gGetViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+                return CustomViewHolderSub(view)
+            }
+
+            override fun hGetBindView(
                 viewHolder: RecyclerView.ViewHolder,
                 viewType: Int,
                 position: Int
@@ -162,45 +195,22 @@ class AirOptimizeMyAppActivity : AppCompatActivity() {
                 }
             }
 
-            override fun getLayoutManager(appContext: Context?): RecyclerView.LayoutManager? {
-                return LinearLayoutManager(appContext)
-            }
-
-            override fun getRvHolderViewGroup(): ViewGroup? {
-                return rvHolderSub
-            }
-
-            override fun getSize(): Int? {
-                return rvItemsSub.size
-            }
-
-            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return CustomViewHolderSub(view)
-            }
-
-            override fun getViewLayoutId(viewType: Int): Int? {
-                return R.layout.rv_item_sub
-            }
-
-            override fun getViewType(position: Int): Int? {
-                return 0
-            }
-
         })
     }
 
     override fun onBackPressed() {
-        val toast = Toast.makeText(this, "Please tap on the confirmation to exit", Toast.LENGTH_SHORT)
+        val toast =
+            Toast.makeText(this, "Please tap on the confirmation to exit", Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM or Gravity.CENTER, 0, 300)
         toast.show()
     }
 
-    class CustomViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val manufacturerNameTv: TextView = view.manufacturerNameTv
         var rvHolderSub: LinearLayout = view.rvHolderSub
     }
 
-    class CustomViewHolderSub(view: View): RecyclerView.ViewHolder(view) {
+    class CustomViewHolderSub(view: View) : RecyclerView.ViewHolder(view) {
         val idTv: TextView = view.idTv
         val instructionTv: TextView = view.instructionTv
         val verticalLine1: LinearLayout = view.verticalLine1
