@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.mumayank.airoptimizemyapplib.AirOptimizeMyAppActivity
 import com.pixplicity.easyprefs.library.Prefs
-import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.android.synthetic.main.ao_main_activity.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.ao_main_activity)
 
         optimizationButton.setOnClickListener {
             startActivity(

@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.air_optimize_my_app_activity.*
-import kotlinx.android.synthetic.main.rv_item.view.*
-import kotlinx.android.synthetic.main.rv_item_sub.view.*
+import kotlinx.android.synthetic.main.air_optimization_rv_item.view.*
+import kotlinx.android.synthetic.main.air_optimization_rv_item_sub.view.*
 import mumayank.com.airrecyclerview.AirRv
 
 class AirOptimizeMyAppActivity : AppCompatActivity() {
@@ -123,7 +123,7 @@ class AirOptimizeMyAppActivity : AppCompatActivity() {
             }
 
             override fun fGetViewLayoutId(viewType: Int): Int? {
-                return R.layout.rv_item
+                return R.layout.air_optimization_rv_item
             }
 
             override fun gGetViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
@@ -168,7 +168,7 @@ class AirOptimizeMyAppActivity : AppCompatActivity() {
             }
 
             override fun fGetViewLayoutId(viewType: Int): Int? {
-                return R.layout.rv_item_sub
+                return R.layout.air_optimization_rv_item_sub
             }
 
             override fun gGetViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
